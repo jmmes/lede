@@ -13,7 +13,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: 30 19 * * *
+    - cron: 30 19 * 1 *
 
 jobs:
 
@@ -24,7 +24,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: master
         fetch-depth: 0
@@ -55,3 +55,9 @@ jobs:
       env:
         DOWNSTREAM_BRANCH: master
       run: git push origin $DOWNSTREAM_BRANCH
+           permissions:
+           deployments: write
+           contents: write
+           statuses: write
+           actions: write
+           checks: read
