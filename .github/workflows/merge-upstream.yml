@@ -54,10 +54,10 @@ jobs:
     - name: Push Commits
       env:
         DOWNSTREAM_BRANCH: master
+      permissions:
+        deployments: write
+        contents: write
+        statuses: write
+        actions: write
+        checks: read  
       run: git push origin $DOWNSTREAM_BRANCH
-           permissions:
-           deployments: write
-           contents: write
-           statuses: write
-           actions: write
-           checks: read
