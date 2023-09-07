@@ -20,7 +20,8 @@ permissions:
   contents: write
   statuses: write
   actions: write
-  checks: read     
+  checks: read
+  workflow: write
 
 jobs:
 
