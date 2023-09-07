@@ -21,7 +21,6 @@ permissions:
   statuses: write
   actions: write
   checks: read
-  workflow: write
 
 jobs:
 
