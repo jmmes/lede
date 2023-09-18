@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@master
+        uses: actions/checkout@v3.1.0
         with:
           ref: master
 
@@ -45,7 +45,7 @@ jobs:
           sudo -E timedatectl set-timezone "Asia/Shanghai"
       
       - name: Checkout OpenWrt
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.1.0
         
       - name: 自定义插件主题。
         run: |
@@ -55,6 +55,7 @@ jobs:
           git clone https://github.com/openwrt-develop/luci-theme-atmaterial.git
           git clone https://github.com/fw876/helloworld.git
           git clone https://github.com/xiaorouji/openwrt-passwall.git
+          git clone https://github.com/xiaorouji/openwrt-passwall-packages.git
           git clone https://github.com/kenzok8/openwrt-packages.git
           git clone https://github.com/kenzok8/small.git
           git clone https://github.com/Lienol/openwrt-package.git
@@ -106,9 +107,8 @@ jobs:
           cat >> .config <<EOF
           CONFIG_TARGET_x86=y
           CONFIG_TARGET_x86_64=y
-          CONFIG_TARGET_x86_64_Generic=y
+          CONFIG_TARGET_x86_64_DEVICE_generic=y
           CONFIG_TARGET_KERNEL_PARTSIZE=64
-          CONFIG_LINUX_6_1=y
           EOF
 
           # 固件压缩:
@@ -166,6 +166,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_NaiveProxy=y
           CONFIG_PACKAGE_luci-app-passwall2_Iptables_Transparent_Proxy=y
           CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_tuic_client=y
+          CONFIG_PACKAGE_luci-i18n-passwall2-zh-cn=y
           CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Hysteria=y
           CONFIG_PACKAGE_luci-app-passwall_INCLUDE_NaiveProxy=y
           CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ChinaDNS_NG=y
