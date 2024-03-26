@@ -56,16 +56,21 @@ jobs:
           git clone https://github.com/fw876/helloworld.git
           git clone https://github.com/xiaorouji/openwrt-passwall.git
           git clone https://github.com/xiaorouji/openwrt-passwall-packages.git
-          git clone https://github.com/xiaorouji/openwrt-passwall2.git
-          # git clone https://github.com/kenzok8/openwrt-packages.git
-          # git clone https://github.com/kenzok8/small.git
-          # git clone https://github.com/Lienol/openwrt-package.git
+          # git clone https://github.com/xiaorouji/openwrt-passwall2.git
+          git clone https://github.com/kenzok8/openwrt-packages.git
+          git clone https://github.com/kenzok8/small.git
+          git clone https://github.com/Lienol/openwrt-package.git
       
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
+      - name: Update golang
+        run: |
+          rm -rf feeds/packages/lang/golang
+          git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+      
       - name: Costom configure file
         run: |
           rm -f ./.config*
