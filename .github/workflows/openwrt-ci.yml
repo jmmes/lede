@@ -28,6 +28,20 @@ jobs:
         with:
           ref: master
 
+      - name: 释放磁盘空间
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: true
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          swap-storage: true
+      
       - name: Initialization environment
         env:
           DEBIAN_FRONTEND: noninteractive
@@ -60,7 +74,7 @@ jobs:
           git clone https://github.com/kenzok8/openwrt-packages.git
           git clone https://github.com/kenzok8/small.git
           git clone https://github.com/Lienol/openwrt-package.git
-          mkdir -p /home/runner/work/amlogic-s9xxx-armbian/amlogic-s9xxx-armbian/build/cache
+          
       - name: Update feeds
         run: |
           ./scripts/feeds update -a
