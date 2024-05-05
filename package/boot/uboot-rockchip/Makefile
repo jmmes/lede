@@ -354,12 +354,12 @@ UBOOT_MAKE_FLAGS += \
   PATH=$(STAGING_DIR_HOST)/bin:$(PATH) \
   BL31=$(STAGING_DIR_IMAGE)/$(ATF)
 
-ifeq ($(CONFIG_PACKAGE_arm-trusted-firmware-rk3566),y)
+ifeq ($(CONFIG_PACKAGE_arm-trusted-firmware-rk3568),y)
 UBOOT_MAKE_FLAGS += \
   ROCKCHIP_TPL=$(STAGING_DIR_IMAGE)/$(DDR)
 endif
 
-ifeq ($(CONFIG_PACKAGE_arm-trusted-firmware-rk3568),y)
+ifeq ($(CONFIG_PACKAGE_arm-trusted-firmware-rk3566),y)
 UBOOT_MAKE_FLAGS += \
   ROCKCHIP_TPL=$(STAGING_DIR_IMAGE)/$(DDR)
 endif
